@@ -1,6 +1,6 @@
 {
-  "id": "acode.plugin",
-  "name": "Plugin",
+  "id": "acode.plugin.liveshare",
+  "name": "Acode Live Share",
   "main": "main.js",
   "version": "1.0.0",
   "readme": "readme.md",
@@ -10,10 +10,10 @@
   "license": "MIT",
   "changelogs": "changelogs.md",
   "keywords": [],
-  "price": 0,
+  "price": 30,
   "author": {
-    "name": "",
+    "name": "Devendra Nishad",
     "email": "",
-    "github": ""
+    "github": "devendra2073"
   }
 }

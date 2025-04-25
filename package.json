@@ -8,7 +8,8 @@
   "license": "MIT",
   "dependencies": {
     "@types/ace": "^0.0.50",
-    "html-tag-js": "^1.1.41"
+    "html-tag-js": "^1.1.41",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "esbuild": "^0.24.0",
