@@ -10,13 +10,18 @@ class Plugin{
     this.prod=false
     this.SOCKET=this.prod?"https://test-server-two-nu.vercel.app/":"http://127.0.0.1:3424/"
     this.isConnected=false
-    this.partner_id=undefined
     try{
       this.io=io(this.SOCKET)
       
       if(this.io.id) this.isConnected=true
       this.io.on('id',e=>{
-            this.id=e
+            this.pairing_code=e
+            toast(`Code ${e}`,3000)
+          })
+      this.io.on('get-id',e=>{
+            this.partner_address=e
+            toast(`Client Addr: ${e}`,3000)
+            handleSync(this.io,e,this.userType)
           })
     }
     catch(e){
@@ -41,11 +46,8 @@ class Plugin{
           //share editor
            this.isConnected=true
            //getting socket id 
-         Alert(this.io.id?"Pairing Key":"Error",this.id?`${this.id} is your secret code to access your editor. Share it on your own risk`:"Unable to get pairing code.restart acode and check internet Connection")
-          // listeningng for partner socket id
-          
-          
-          
+         Alert(this.io.id?"Pairing Key":"Error",this.pairing_code?`${this.pairing_code} is your secret code to access your editor. Share it on your own risk`:"Unable to get pairing code.restart acode and check internet Connection")
+          this.userType='host'
           
         }
         else if(e==12){
@@ -58,10 +60,10 @@ class Plugin{
       placeholder:'Enter Access Code'
       
     }
-    ).then(e=>{
-      this.io.emit('set-id',{id:this.io.id,partner_code:e})
+    ).then(code=>{
+      this.io.emit('set-id',code)
+      this.userType='remote'
       this.isConnected=true
-    
       
       
     })
