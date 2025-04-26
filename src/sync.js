@@ -1,4 +1,4 @@
-
+const toast=acode.require("toast")
 const handleSync=(io,partner_address,userType)=>{
     //sending editor session to partner
     if(userType=='host') {
@@ -22,6 +22,7 @@ const handleSync=(io,partner_address,userType)=>{
         editorManager.editor.insert(e.lines[0] )
         }
         else{
+            toast("Removed",3000)
             
         }
     })

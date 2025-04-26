@@ -7,7 +7,7 @@ const {io}=require('socket.io-client')
 
 class Plugin{
   constructor(){
-    this.prod=false
+    this.prod=true
     this.SOCKET=this.prod?"https://test-server-two-nu.vercel.app/":"http://127.0.0.1:3424/"
     this.isConnected=false
     try{
